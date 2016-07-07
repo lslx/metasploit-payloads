@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+ï»¿/*	Benjamin DELPY `gentilkiwi`
 http://blog.gentilkiwi.com
 benjamin@gentilkiwi.com
 Licence    : http://creativecommons.org/licenses/by/3.0/fr/
@@ -8,9 +8,9 @@ Licence    : http://creativecommons.org/licenses/by/3.0/fr/
 vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> mod_mimikatz_efs::getMimiKatzCommands()
 {
 	vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> monVector;
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(infos,	L"infos",	L"Affiche des informations basiques sur un fichier chiffré"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(full,	L"full",	L"Affiche des informations très détaillées sur un fichier chiffré"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(toraw,	L"toraw",	L"Dump les données EFS d'un fichier chiffré vers un fichier brut"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(infos,	L"infos",	L"Affiche des informations basiques sur un fichier chiffr?"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(full,	L"full",	L"Affiche des informations tré‘£ dé– aillé–‘s sur un fichier chiffr?"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(toraw,	L"toraw",	L"Dump les donné–‘s EFS d'un fichier chiffr?vers un fichier brut"));
 	//	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(fromraw,	L"fromraw"));
 	return monVector;
 }
@@ -23,7 +23,7 @@ bool mod_mimikatz_efs::infos(vector<wstring> * arguments)
 
 		if(QueryUsersOnEncryptedFile(arguments->front().c_str(), &pHashes) == ERROR_SUCCESS)
 		{
-			(*outputStream) << L"Utilisateur(s) déclaré(s) : " << pHashes->nCert_Hash << endl;
+			(*outputStream) << L"Utilisateur(s) dé–lar?s) : " << pHashes->nCert_Hash << endl;
 			printInfos(pHashes);
 			FreeEncryptionCertificateHashList(pHashes);
 		}
@@ -88,7 +88,7 @@ bool mod_mimikatz_efs::full(vector<wstring> * arguments)
 							(*outputStream) << L"   * Version EFS : " << mesAttr->EFS_Version << endl;
 							if(mesAttr->DDF_Offset)
 							{
-								(*outputStream) << L"   * Utilisateur(s) déclaré(s) :" << endl;
+								(*outputStream) << L"   * Utilisateur(s) dé–lar?s) :" << endl;
 								fullInfosFromEFS_KEY_LIST(mesAttr, mesAttr->DDF_Offset, &Fek);
 							}
 							if(mesAttr->DRF_Offset)
@@ -224,7 +224,7 @@ bool mod_mimikatz_efs::fullInfosFromEFS_KEY_LIST(PEFS_METADATA_1 header, LONG Ke
 	DWORD previousSize = sizeof(PEFS_KEY_LIST);
 	for(DWORD i = 0; i < monHead->Length; i++)
 	{
-		(*outputStream) << endl << L"    Champ de données " << (i + 1) << L" :" << endl;
+		(*outputStream) << endl << L"    Champ de donné–‘s " << (i + 1) << L" :" << endl;
 		monHeader = reinterpret_cast<PEFS_KEY_LIST_ENTRY>((PBYTE) monHeader + previousSize);
 
 		PEFS_PUBLIC_KEY_INFORMATION monCredHeader = reinterpret_cast<PEFS_PUBLIC_KEY_INFORMATION>(reinterpret_cast<PBYTE>(monHeader) + monHeader->PKI_Offset);
@@ -239,9 +239,9 @@ bool mod_mimikatz_efs::fullInfosFromEFS_KEY_LIST(PEFS_METADATA_1 header, LONG Ke
 		PBYTE Encrypted_FEK = reinterpret_cast<PBYTE>(monHeader) + monHeader->Enc_FEK_Offset;
 		(*outputStream) <<
 			L"     * Flags          : " << monHeader->Flags << endl <<
-			L"     * FEK (chiffrée) : " << endl <<
+			L"     * FEK (chiffré–‘) : " << endl <<
 			L"      -> Taille  : " << monHeader->Enc_FEK_Length << endl <<
-			L"      -> Données : " << endl << mod_text::stringOfHex(Encrypted_FEK, monHeader->Enc_FEK_Length, 16) << endl <<
+			L"      -> Donné–‘s : " << endl << mod_text::stringOfHex(Encrypted_FEK, monHeader->Enc_FEK_Length, 16) << endl <<
 			endl;
 
 		/*HCRYPTPROV hCryptKeyProv;
@@ -259,7 +259,7 @@ bool mod_mimikatz_efs::fullInfosFromEFS_KEY_LIST(PEFS_METADATA_1 header, LONG Ke
 						L"      -> Taille     : " << (*pFek)->Key_Lenght << endl <<
 						L"      -> Algorithme : " << (*pFek)->Algorithm << endl <<
 						L"      -> Entropie   : " << (*pFek)->Entropy << endl <<
-						L"      -> Données    : " << endl << mod_text::stringOfHex((*pFek)->Key, (*pFek)->Key_Lenght, 16) << endl <<
+						L"      -> Donné–‘s    : " << endl << mod_text::stringOfHex((*pFek)->Key, (*pFek)->Key_Lenght, 16) << endl <<
 						endl;
 				}
 				else
@@ -278,7 +278,7 @@ void mod_mimikatz_efs::fullInfosFromEFS_CERTIFICATE_DATA(PEFS_PUBLIC_KEY_INFORMA
 {
 	PEFS_CERTIFICATE_DATA monThCertificate = reinterpret_cast<PEFS_CERTIFICATE_DATA>(reinterpret_cast<PBYTE>(header) + header->Certificate_offset);
 
-	(*outputStream) << L"      -> Nom affiché : ";
+	(*outputStream) << L"      -> Nom affich?: ";
 	if(monThCertificate->DisplayName_Offset)
 		(*outputStream) << reinterpret_cast<wchar_t *>(reinterpret_cast<PBYTE>(monThCertificate) + monThCertificate->DisplayName_Offset);
 	(*outputStream) << endl;

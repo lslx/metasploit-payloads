@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+Ôªø/*	Benjamin DELPY `gentilkiwi`
 	http://blog.gentilkiwi.com
 	benjamin@gentilkiwi.com
 	Licence : http://creativecommons.org/licenses/by/3.0/fr/
@@ -14,15 +14,15 @@ bool mimikatz::initLocalModules()
 	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"",			L"Standard", mod_mimikatz_standard::getMimiKatzCommands()));
 	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"crypto",		L"Cryptographie et certificats", mod_mimikatz_crypto::getMimiKatzCommands()));
 	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"hash",		L"Hash", mod_mimikatz_hash::getMimiKatzCommands()));
-	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"system",		L"Gestion systËme", mod_mimikatz_system::getMimiKatzCommands()));
+	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"system",		L"Gestion systÈëùe", mod_mimikatz_system::getMimiKatzCommands()));
 	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"process",		L"Manipulation des processus", mod_mimikatz_process::getMimiKatzCommands()));
 	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"thread",		L"Manipulation des threads", mod_mimikatz_thread::getMimiKatzCommands()));
 	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"service",		L"Manipulation des services", mod_mimikatz_service::getMimiKatzCommands()));
-	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"privilege",	L"Manipulation des privilËges", mod_mimikatz_privilege::getMimiKatzCommands()));
+	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"privilege",	L"Manipulation des privilÈëóes", mod_mimikatz_privilege::getMimiKatzCommands()));
 	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"handle",		L"Manipulation des handles", mod_mimikatz_handle::getMimiKatzCommands()));
-	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"impersonate",	L"Manipulation tokens d\'accËs", mod_mimikatz_impersonate::getMimiKatzCommands()));
-	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"winmine",		L"Manipulation du dÈmineur", mod_mimikatz_winmine::getMimiKatzCommands()));
-	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"minesweeper",	L"Manipulation du dÈmineur 7", mod_mimikatz_minesweeper::getMimiKatzCommands()));
+	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"impersonate",	L"Manipulation tokens d\'accÈë£", mod_mimikatz_impersonate::getMimiKatzCommands()));
+	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"winmine",		L"Manipulation du dÈñôineur", mod_mimikatz_winmine::getMimiKatzCommands()));
+	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"minesweeper",	L"Manipulation du dÈñôineur 7", mod_mimikatz_minesweeper::getMimiKatzCommands()));
 	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"nogpo",		L"Anti-gpo et patchs divers", mod_mimikatz_nogpo::getMimiKatzCommands()));
 	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"samdump",		L"Dump de SAM", mod_mimikatz_samdump::getMimiKatzCommands()));
 	mesModules.push_back(KIWI_MIMIKATZ_LOCAL_MODULE(L"inject",		L"Injecteur de librairies", mod_mimikatz_inject::getMimiKatzCommands()));
@@ -129,7 +129,7 @@ bool mimikatz::doCommandeLocale(wstring * fonction, vector<wstring> * arguments)
 			}
 
 			if(module.empty()) (*outputStream) << L"Commande locale \'" << commande << L"\' introuvable" << endl; 
-			else (*outputStream) << L"Module : \'" << module << L"\' identifiÈ, mais commande \'" << commande << L"\' introuvable" << endl; 
+			else (*outputStream) << L"Module : \'" << module << L"\' identifi? mais commande \'" << commande << L"\' introuvable" << endl; 
 
 			(*outputStream) << endl << L"Description du module : " << monModule->description << endl;
 			listCommandes(monModule);
@@ -222,7 +222,7 @@ bool mimikatz::doCommandeKernel(std::wstring &commande)
 	}
 	else
 	{
-		(*outputStream) << L"Commande vide (fermeture forcÈe) reÁue" << endl;
+		(*outputStream) << L"Commande vide (fermeture forcÈñë) reÈêÑe" << endl;
 		closeKernel();
 	}
 
@@ -250,17 +250,17 @@ bool mimikatz::doCommandeDistante(std::wstring &commande)
 						}
 						else
 						{
-							(*outputStream) << L"Erreur : pas de rÈponse possible ; " << mod_system::getWinError() << endl;
+							(*outputStream) << L"Erreur : pas de rÈñúonse possible ; " << mod_system::getWinError() << endl;
 							break;
 						}
 					} while(*(buffer.begin()) == L'#');
 				}
-				else (*outputStream) << L"Erreur : pas d\'Ècriture possible ; " << mod_system::getWinError() << endl;
+				else (*outputStream) << L"Erreur : pas d\'Èñèriture possible ; " << mod_system::getWinError() << endl;
 			}
 		}
-		else (*outputStream) << L"Commande vide (dÈconnexion forcÈe) reÁue" << endl;
+		else (*outputStream) << L"Commande vide (dÈñèonnexion forcÈñë) reÈêÑe" << endl;
 	}
-	else (*outputStream) << L"Erreur : pas ou plus de communication Ètablie" << endl;
+	else (*outputStream) << L"Erreur : pas ou plus de communication Èñ†ablie" << endl;
 
 	if(!commOk)
 		mod_mimikatz_inject::closeThisCommunicator();

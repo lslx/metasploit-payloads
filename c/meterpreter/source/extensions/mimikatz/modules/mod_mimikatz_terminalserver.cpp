@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+ï»¿/*	Benjamin DELPY `gentilkiwi`
 	http://blog.gentilkiwi.com
 	benjamin@gentilkiwi.com
 	Licence : http://creativecommons.org/licenses/by/3.0/fr/
@@ -11,9 +11,9 @@ vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> mod_mimikatz_terminalserver::getMimiK
 	vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> monVector;
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(sessions,		L"sessions"));
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(processes,		L"processes"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(multirdp,		L"multirdp",		L"Patch le bureau à distance pour dépasser 2 connexions simultanées"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(viewshadow,		L"viewshadow",		L"Affiche l\'état de la prise de contrôle des sessions RDP"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(modifyshadow,	L"modifyshadow",	L"Modifie l\'état de la prise de contrôle des sessions RDP (DISABLE, INTERACT, INTERACT_NOASK, VIEW, VIEW_NOASK)"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(multirdp,		L"multirdp",		L"Patch le bureau ?distance pour dé–œasser 2 connexions simultané–‘s"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(viewshadow,		L"viewshadow",		L"Affiche l\'é– at de la prise de contré¬ºe des sessions RDP"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(modifyshadow,	L"modifyshadow",	L"Modifie l\'é– at de la prise de contré¬ºe des sessions RDP (DISABLE, INTERACT, INTERACT_NOASK, VIEW, VIEW_NOASK)"));
 	return monVector;
 }
 

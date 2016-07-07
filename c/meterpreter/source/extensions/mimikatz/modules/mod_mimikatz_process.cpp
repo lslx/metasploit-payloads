@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+Ôªø/*	Benjamin DELPY `gentilkiwi`
 	http://blog.gentilkiwi.com
 	benjamin@gentilkiwi.com
 	Licence    : http://creativecommons.org/licenses/by/3.0/fr/
@@ -9,8 +9,8 @@ vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> mod_mimikatz_process::getMimiKatzComm
 {
 	vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> monVector;
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(list,	L"list",	L"Liste les processus"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(start,	L"start",	L"ExÈcute un processus, /paused et/ou /sudo"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(suspend,	L"suspend",	L"Suspend l\'exÈcution d\'un processus"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(start,	L"start",	L"ExÈñèute un processus, /paused et/ou /sudo"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(suspend,	L"suspend",	L"Suspend l\'exÈñèution d\'un processus"));
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(resume,	L"resume",	L"Reprend un processus"));
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(stop,	L"stop",	L"Stoppe un (ou plusieurs) processus"));
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(modules,	L"modules",	L"Liste les modules (pour le moment du PID courant)"));
@@ -26,7 +26,7 @@ bool mod_mimikatz_process::start(vector<wstring> * arguments)
 		bool paused = false;
 		bool sudo = false;
 
-		(*outputStream) << L"Demande d\'exÈcution de : \'" << commande << L"'" << endl;
+		(*outputStream) << L"Demande d\'exÈñèution de : \'" << commande << L"'" << endl;
 		PROCESS_INFORMATION pi = {INVALID_HANDLE_VALUE, INVALID_HANDLE_VALUE, 0, 0};
 
 		switch(arguments->size())
@@ -60,7 +60,7 @@ bool mod_mimikatz_process::start(vector<wstring> * arguments)
 				(*outputStream) << L" * Le Thread principal est suspendu ! Reprise avec : thread::resume " << pi.dwThreadId << endl;
 
 			if(sudo)
-				(*outputStream) << L" * Le processus est dÈmarrÈ avec de fausses donnÈes d\'identification" << endl;
+				(*outputStream) << L" * Le processus est dÈñôarr?avec de fausses donnÈñës d\'identification" << endl;
 
 			printInfosFromPid(pi.dwProcessId, pi.dwThreadId);
 		}

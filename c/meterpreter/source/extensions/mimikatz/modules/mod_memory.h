@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+ï»¿/*	Benjamin DELPY `gentilkiwi`
 	http://blog.gentilkiwi.com
 	benjamin@gentilkiwi.com
 	Licence : http://creativecommons.org/licenses/by/3.0/fr/
@@ -18,5 +18,5 @@ public:
 
 	static bool genericPatternSearch(PBYTE * thePtr, wchar_t * moduleName, BYTE pattern[], ULONG taillePattern, LONG offSetToPtr, char * startFunc = NULL, bool enAvant = true, bool noPtr = false);
 
-	/*static bool WhereIsMyFuckingRelativePattern(const PBYTE adresseBase, const PBYTE addrPattern, const PBYTE maskPattern, PBYTE *addressePattern, size_t longueurMask, const long offsetAddrInMask, const long offset = 1); // et merde je la documente pas celle là !*/
+	/*static bool WhereIsMyFuckingRelativePattern(const PBYTE adresseBase, const PBYTE addrPattern, const PBYTE maskPattern, PBYTE *addressePattern, size_t longueurMask, const long offsetAddrInMask, const long offset = 1); // et merde je la documente pas celle l?!*/
 };

@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+ï»¿/*	Benjamin DELPY `gentilkiwi`
 	http://blog.gentilkiwi.com
 	benjamin@gentilkiwi.com
 	Licence    : http://creativecommons.org/licenses/by/3.0/fr/
@@ -80,7 +80,7 @@ bool mod_mimikatz_inject::injectInPid(DWORD & pid, wstring & libPath, bool isCom
 
 				if(monCommunicator->createServer())
 				{
-					(*outputStream) << L"Serveur connecté à un client !" << endl;
+					(*outputStream) << L"Serveur connect??un client !" << endl;
 					if(monCommunicator->readFromPipe(monBuffer))
 					{
 						(*outputStream) << L"Message du processus :" << endl << monBuffer << endl;
@@ -93,15 +93,15 @@ bool mod_mimikatz_inject::injectInPid(DWORD & pid, wstring & libPath, bool isCom
 				}
 				else
 				{
-					(*outputStream) << L"Erreur : Impossible de créer un canal de communication ! ; " << mod_system::getWinError() << endl;
+					(*outputStream) << L"Erreur : Impossible de cré–‘r un canal de communication ! ; " << mod_system::getWinError() << endl;
 					closeThisCommunicator();
 				}
 			}
 			else
-				(*outputStream) << L"Injecté sans communication (legacy)" << endl;
+				(*outputStream) << L"Inject?sans communication (legacy)" << endl;
 		} else (*outputStream) << L"Erreur : Impossible d\'injecter ! ; " << mod_system::getWinError() << endl;
 	}
-	else (*outputStream) << L"Erreur : un canal de communicaton est déjà ouvert" << endl;
+	else (*outputStream) << L"Erreur : un canal de communicaton est dé––?ouvert" << endl;
 
 	return reussite;
 }

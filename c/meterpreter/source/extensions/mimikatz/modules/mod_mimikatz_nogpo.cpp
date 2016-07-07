@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+ï»¿/*	Benjamin DELPY `gentilkiwi`
 	http://blog.gentilkiwi.com
 	benjamin@gentilkiwi.com
 	Licence    : http://creativecommons.org/licenses/by/3.0/fr/
@@ -8,7 +8,7 @@
 vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> mod_mimikatz_nogpo::getMimiKatzCommands()
 {
 	vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> monVector;
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(regedit,	L"regedit",	L"Lance un éditeur de registre, ignorant DisableRegistryTools"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(regedit,	L"regedit",	L"Lance un é–iteur de registre, ignorant DisableRegistryTools"));
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(cmd,		L"cmd",		L"Lance une invite de commande, ignorant DisableCMD"));
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(taskmgr,	L"taskmgr",	L"Lance le gestionnaire de tache, ignorant DisableTaskMgr"));
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(olpst,	L"olpst",	L"Lance Outlook, ignorant DisablePst"));
@@ -114,13 +114,13 @@ bool mod_mimikatz_nogpo::getApplicationPathFromCLSID(wstring application, wstrin
 									path->assign(reinterpret_cast<wchar_t *>(monPath));
 								} else (*outputStream) << "RegQueryValueEx \'" << monPath <<  "\' : " << mod_system::getWinError(false, regError) << endl;
 								delete[] monPath;
-							} else (*outputStream) << "Le type retourné par \'" << monPath <<  "\' n\'est pas : REG_SZ" << endl;
+							} else (*outputStream) << "Le type retourn?par \'" << monPath <<  "\' n\'est pas : REG_SZ" << endl;
 						} else (*outputStream) << "RegQueryValueEx \'" << monPath <<  "\' : " << mod_system::getWinError(false, regError) << endl;
 						RegCloseKey(hApplicationPath);
 					} else (*outputStream) << "RegOpenKeyEx \'" << regPathToPath <<  "\' : " << mod_system::getWinError(false, regError) << endl;
 				} else (*outputStream) << "RegQueryValueEx \'" << monGUID <<  "\' : " << mod_system::getWinError(false, regError) << endl;
 				delete[] monGUID;
-			} else (*outputStream) << "Le type retourné par \'" << monGUID <<  "\' n\'est pas : REG_SZ" << endl;
+			} else (*outputStream) << "Le type retourn?par \'" << monGUID <<  "\' n\'est pas : REG_SZ" << endl;
 		} else (*outputStream) << "RegQueryValueEx \'" << monGUID <<  "\' : " << mod_system::getWinError(false, regError) << endl;
 		RegCloseKey(hApplication);
 	} else (*outputStream) << "RegOpenKeyEx \'" << pathToApplication <<  "\' : " << mod_system::getWinError(false, regError) << endl;
@@ -140,7 +140,7 @@ bool mod_mimikatz_nogpo::disableSimple(wstring commandLine, SIZE_T taillePattern
 		if(mod_process::getPeb(monPeb, mesInfos->hProcess))
 		{
 			PBYTE patternAddr = NULL;
-			// Ici NULL est "toléré", pas de moyen simple de connaitre la taille en mode USER :( (enfin pour le moment)
+			// Ici NULL est "tolé–ž?, pas de moyen simple de connaitre la taille en mode USER :( (enfin pour le moment)
 			if(mod_memory::searchMemory(reinterpret_cast<PBYTE>(monPeb->ImageBaseAddress), NULL, maCleDeDepart, &patternAddr, taillePattern, true, mesInfos->hProcess))
 			{
 				if(!(reussite = mod_memory::writeMemory(patternAddr, maCleFinale, taillePattern, mesInfos->hProcess)))
@@ -186,7 +186,7 @@ bool mod_mimikatz_nogpo::disableSimple(wstring commandLine, wstring origKey, wst
 
 		reussite = disableSimple(commandLine, taillePattern, maCleDeDepart, maCleFinale, monPID);
 	}
-	else (*outputStream) << L"mod_mimikatz_nogpo::disableSimple (unicode) Taille du pattern original différente du pattern cible" << endl;
+	else (*outputStream) << L"mod_mimikatz_nogpo::disableSimple (unicode) Taille du pattern original diffé–žente du pattern cible" << endl;
 
 	return reussite;
 }
@@ -203,7 +203,7 @@ bool mod_mimikatz_nogpo::disableSimple(wstring commandLine, string origKey, stri
 
 		reussite = disableSimple(commandLine, taillePattern, maCleDeDepart, maCleFinale, monPID);
 	}
-	else (*outputStream) << L"mod_mimikatz_nogpo::disableSimple (non-unicode) Taille du pattern original différente du pattern cible" << endl;
+	else (*outputStream) << L"mod_mimikatz_nogpo::disableSimple (non-unicode) Taille du pattern original diffé–žente du pattern cible" << endl;
 
 	return reussite;
 }

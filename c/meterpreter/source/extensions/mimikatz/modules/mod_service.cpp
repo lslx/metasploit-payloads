@@ -1,11 +1,11 @@
-/*	Benjamin DELPY `gentilkiwi`
+ï»¿/*	Benjamin DELPY `gentilkiwi`
 	http://blog.gentilkiwi.com
 	benjamin@gentilkiwi.com
 	Licence : http://creativecommons.org/licenses/by/3.0/fr/
 */
 #include "mod_service.h"
 
-bool mod_service::getList(vector<KIWI_SERVICE_STATUS_PROCESS> * monVectorService, wstring * machineName) // machine non implémenté
+bool mod_service::getList(vector<KIWI_SERVICE_STATUS_PROCESS> * monVectorService, wstring * machineName) // machine non implé–™ent?
 {
 	bool reussite = false;
 	DWORD error = ERROR_SUCCESS;
@@ -39,7 +39,7 @@ bool mod_service::getList(vector<KIWI_SERVICE_STATUS_PROCESS> * monVectorService
 }
 
 
-bool mod_service::getUniqueForName(KIWI_SERVICE_STATUS_PROCESS * monService, wstring * serviceName, wstring * machineName) // machine non implémenté
+bool mod_service::getUniqueForName(KIWI_SERVICE_STATUS_PROCESS * monService, wstring * serviceName, wstring * machineName) // machine non implé–™ent?
 {
 	bool reussite = false;
 

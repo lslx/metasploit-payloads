@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+ï»¿/*	Benjamin DELPY `gentilkiwi`
 	http://blog.gentilkiwi.com
 	benjamin@gentilkiwi.com
 	Licence : http://creativecommons.org/licenses/by/3.0/fr/
@@ -66,14 +66,14 @@ DWORD WINAPI ThreadProc(LPVOID lpParameter)
 						{
 							monBuffer = L"@";
 						}
-						else // La fonction à retourné FALSE, il y a donc anomalie bloquante sur le canal
+						else // La fonction ?retourn?FALSE, il y a donc anomalie bloquante sur le canal
 						{
 							break;
 						}
 					}
 					else
 					{
-						monBuffer = L"@Méthode \'";
+						monBuffer = L"@Mé– hode \'";
 						monBuffer.append(fonction);
 						monBuffer.append(L"\' introuvable !\n");
 					}

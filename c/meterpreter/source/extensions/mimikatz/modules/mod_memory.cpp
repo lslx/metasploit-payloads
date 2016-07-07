@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+ï»¿/*	Benjamin DELPY `gentilkiwi`
 	http://blog.gentilkiwi.com
 	benjamin@gentilkiwi.com
 	Licence : http://creativecommons.org/licenses/by/3.0/fr/
@@ -112,7 +112,7 @@ bool mod_memory::genericPatternSearch(PBYTE * thePtr, wchar_t * moduleName, BYTE
 	return resultat;
 }
 
-/*bool mod_memory::WhereIsMyFuckingRelativePattern(const PBYTE adresseBase, const PBYTE addrPattern, const PBYTE maskPattern, PBYTE *addressePattern, size_t longueurMask, const long offsetAddrInMask, const long offset) // et merde je la documente pas celle là !
+/*bool mod_memory::WhereIsMyFuckingRelativePattern(const PBYTE adresseBase, const PBYTE addrPattern, const PBYTE maskPattern, PBYTE *addressePattern, size_t longueurMask, const long offsetAddrInMask, const long offset) // et merde je la documente pas celle l?!
 {
 	PBYTE autreAddr = adresseBase;
 	PBYTE monMask = new BYTE[longueurMask];

